@@ -1,20 +1,16 @@
-pkgbase = synergy-git
+pkgbase = synergy-marlus
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 20210210.r3836.d072b5064
+	pkgver = 1.13.1.41
 	pkgrel = 1
-	url = http://synergy-foss.org
-	arch = i686
+	url = https://symless.com/synergy/
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = GPL2
 	makedepends = libxt
 	makedepends = cmake
 	makedepends = qt5-base
 	makedepends = gmock
 	makedepends = gtest
+	makedepends = qt5-tools
 	depends = gcc-libs
 	depends = libxtst
 	depends = libxinerama
@@ -25,7 +21,7 @@ pkgbase = synergy-git
 	optdepends = qt5-base: gui support
 	provides = synergy
 	conflicts = synergy
-	source = synergy::git+https://github.com/symless/synergy-core.git
+	source = synergy::git+https://github.com/symless/synergy-core.git#tag=1.13.1.41-stable
 	source = synergy.png
 	source = synergys_at.socket
 	source = synergys_at.service
@@ -34,5 +30,5 @@ pkgbase = synergy-git
 	sha512sums = f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62
 	sha512sums = e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c
 
-pkgname = synergy-git
+pkgname = synergy-marlus
 
