@@ -1,4 +1,5 @@
-# Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Maintainer: Marlus Lopes
+# Contributor: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jelle van der Waa <jelle vdwaa nl>
@@ -9,21 +10,21 @@
 # Ported from the upstream synergy package
 
 _pkgname=synergy
-pkgname=$_pkgname-git
-pkgver=20210210.r3836.d072b5064
+pkgname=$_pkgname-marlus
+pkgver=1.13.1.41
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
-url='http://synergy-foss.org'
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url='https://symless.com/synergy/'
+arch=('x86_64')
 license=('GPL2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl')
-makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest')
+makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest' 'qt5-tools')
 optdepends=('qt5-base: gui support')
 
 source=(
-  "$_pkgname::git+https://github.com/symless/$_pkgname-core.git"
+  "$_pkgname::git+https://github.com/symless/$_pkgname-core.git#tag=$pkgver-stable"
   "$_pkgname.png"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
@@ -36,18 +37,13 @@ sha512sums=(
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
 )
 
-pkgver() {
-  cd $_pkgname
-
-  printf "%s.r%s.%s" \
-    "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
-}
-
 build() {
   # Build synergy
   cd $_pkgname
+  export SYNERGY_REVISION=$(git rev-parse --short HEAD)
+  export GIT_COMMIT=$(git rev-parse HEAD)
+  export CMAKE_BUILD_TYPE=Release
+  export SYNERGY_ENTERPRISE=ON
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
