@@ -11,8 +11,8 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-marlus
-pkgver=1.14.0.4
-pkgrel=2
+pkgver=1.14.6.18
+pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='https://symless.com/synergy/'
 arch=('x86_64')

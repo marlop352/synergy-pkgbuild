@@ -1,6 +1,6 @@
 pkgbase = synergy-marlus
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 1.14.0.4
+	pkgver = 1.14.6.18
 	pkgrel = 2
 	url = https://symless.com/synergy/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = synergy-marlus
 	optdepends = qt5-base: gui support
 	provides = synergy
 	conflicts = synergy
-	source = synergy::git+https://github.com/symless/synergy-core.git#tag=1.14.0.4-stable
+	source = synergy::git+https://github.com/symless/synergy-core.git#tag=1.14.6.18-stable
 	source = synergys_at.socket
 	source = synergys_at.service
 	sha512sums = SKIP
